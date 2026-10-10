@@ -14,7 +14,23 @@ st.markdown("Machine Learning Pipeline (Linear Regression, Random Forest, LSTM) 
 # Sidebar
 with st.sidebar:
     st.header("Settings")
-    ticker = st.text_input("Ticker Symbol", value="AAPL").upper()
+    
+    TICKERS = {
+        "AAPL": "AAPL (Apple)",
+        "TSLA": "TSLA (Tesla)",
+        "MSFT": "MSFT (Microsoft)",
+        "GOOG": "GOOG (Google)",
+        "AMZN": "AMZN (Amazon)",
+        "NVDA": "NVDA (Nvidia)",
+        "RELIANCE.NS": "RELIANCE.NS (Reliance Industries)",
+        "TCS.NS": "TCS.NS (Tata Consultancy Services)",
+        "TATAMOTORS.NS": "TATAMOTORS.NS (Tata Motors)",
+        "HDFCBANK.NS": "HDFCBANK.NS (HDFC Bank)",
+        "ZOMATO.NS": "ZOMATO.NS (Zomato)",
+        "INFY.NS": "INFY.NS (Infosys)"
+    }
+    
+    ticker = st.selectbox("Ticker Symbol", options=list(TICKERS.keys()), format_func=lambda x: TICKERS[x])
     forecast_days = st.slider("Forecast Days", min_value=5, max_value=60, value=30)
     st.markdown("---")
     run_btn = st.button("Run ML Pipeline", type="primary")
